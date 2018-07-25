@@ -39,6 +39,6 @@ public class ParkingBoyController {
         return map;
     }
 
-    @PostMapping("/car")
+//    @PostMapping("/car")
 
 }
