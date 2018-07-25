@@ -10,8 +10,4 @@ public class Car {
     public String getPlateNum() {
         return plateNum;
     }
-
-    public void setPlateNum(String plateNum) {
-        this.plateNum = plateNum;
-    }
 }

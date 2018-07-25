@@ -5,19 +5,19 @@ import java.util.Map;
 
 public class ParkingLot {
     private int id;
-    private Map<Receipt, Car> carList;
+    private Map<String, Car> carList;
     private String name;
     private int size;
 
     public ParkingLot(String name, int size) {
         id = this.hashCode();
-        carList = new HashMap<Receipt, Car>();
+        carList = new HashMap<String, Car>();
         this.name = name;
         this.size = size;
     }
 
-    public void park(Car car) {
-        carList.put(new Receipt("key"), car);
+    public void park(Receipt receipt, Car car) {
+        carList.put(Integer.toString(receipt.getNumber()), car);
     }
 
     public void unPark(Receipt receipt) {
@@ -28,7 +28,7 @@ public class ParkingLot {
         return id;
     }
 
-    public Map<Receipt, Car> getCarList() {
+    public Map<String, Car> getCarList() {
         return carList;
     }
 

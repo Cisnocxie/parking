@@ -27,5 +27,6 @@ repositories {
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile 'com.alibaba:fastjson:1.2.47'
+	compile("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.4")
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }

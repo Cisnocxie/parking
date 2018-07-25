@@ -3,7 +3,7 @@ package com.oocl.parking.beans;
 public class Receipt {
     private int number;
 
-    public Receipt(String key) {
+    public Receipt() {
         number = this.hashCode();
     }
 

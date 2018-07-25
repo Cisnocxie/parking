@@ -1,8 +1,10 @@
 package com.oocl.parking.services;
 
 import com.oocl.parking.Database;
+import com.oocl.parking.beans.Order;
 import com.oocl.parking.beans.ParkingBoy;
 import com.oocl.parking.beans.ParkingLot;
+import com.oocl.parking.beans.Receipt;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -20,5 +22,13 @@ public class ManagerService {
         ParkingLot parkingLot = Database.getAllParkingLots().stream().filter(parkingLot1 -> parkingLot1.getId() == parkingLotId).findFirst().get();
 
         return parkingBoy.addParkingLot(parkingLot);
+    }
+
+    public boolean postReceipt(Receipt receipt) {
+        return Database.AddReceipt(receipt);
+    }
+
+    public boolean postOrder(Order order) {
+        return Database.AddOrder(order);
     }
 }
