@@ -47,4 +47,12 @@ public class Database {
     public static List<Order> getAllOrders() {
         return orders;
     }
+
+    public static ParkingBoy getParkingBoyById(int id) {
+        return  parkingBoys.stream().filter(parkingBoy -> parkingBoy.getId() == id).findFirst().get();
+    }
+
+    public static ParkingLot getParkingLotById(int id) {
+        return parkingLots.stream().filter(parkingLot -> parkingLot.getId() == id).findFirst().get();
+    }
 }

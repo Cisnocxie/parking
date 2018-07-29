@@ -24,6 +24,10 @@ public class ParkingLot {
         carList.remove(receipt);
     }
 
+    public boolean isFull() {
+        return size == carList.size();
+    }
+
     public int getId() {
         return id;
     }
