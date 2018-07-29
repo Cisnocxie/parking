@@ -7,6 +7,8 @@ import com.oocl.parking.beans.ParkingLot;
 import com.oocl.parking.beans.Receipt;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class ManagerService {
     public boolean postParkingBoy(ParkingBoy parkingBoy) {
@@ -30,5 +32,13 @@ public class ManagerService {
 
     public boolean postOrder(Order order) {
         return Database.AddOrder(order);
+    }
+
+    public Order getOrderById(int id) {
+        return Database.getOrderById(id);
+    }
+
+    public List<Order> getAllOrders() {
+        return Database.getAllOrders();
     }
 }

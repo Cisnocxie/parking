@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -22,10 +23,10 @@ public class ParkingBoyController {
         return parkingBoy;
     }
 
-    @PutMapping("/parkingboys/{parkingboyid}/parkinglots")
-    public Map<String, String> putParkingLotToParkingBoy(@PathVariable int parkingboyid, @RequestBody Map<String, Integer> Ids) {
+    @PutMapping("/parkingboys/{parkingboyid}/parkinglots{parkinglotid}")
+    public Map<String, String> putParkingLotToParkingBoy(@PathVariable int parkingboyid, @PathVariable int parkinglotid) {
         Map<String, String> map = new HashMap<>();
-        map.put("issuccess", managerService.putParkingLotToParkingBoy(Ids.get("parkingLotId"), parkingboyid) ? "success" : "unsuccess");
+        map.put("issuccess", managerService.putParkingLotToParkingBoy(parkinglotid, parkingboyid) ? "success" : "unsuccess");
         return map;
     }
 
@@ -36,6 +37,21 @@ public class ParkingBoyController {
         managerService.postReceipt(receipt);
         managerService.postOrder(order);
         return receipt;
+    }
+
+    @PatchMapping("/orders/{orderid}/parkingboys")
+    public boolean putParkingBoyinOrder(@PathVariable int orderid, @RequestBody int parkingboyid) {
+        if (managerService.getOrderById(orderid).getParkingBoyId() == -1) {
+            managerService.getOrderById(orderid).setParkingBoyId(parkingboyid);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @GetMapping("/orders")
+    public List<Order> getAllOrders() {
+        return managerService.getAllOrders();
     }
 
 

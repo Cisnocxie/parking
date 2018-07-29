@@ -39,4 +39,12 @@ public class Database {
     public static boolean AddOrder(Order order) {
         return orders.add(order);
     }
+
+    public static Order getOrderById(int id) {
+        return orders.stream().filter(order -> order.getId() == id).findFirst().get();
+    }
+
+    public static List<Order> getAllOrders() {
+        return orders;
+    }
 }

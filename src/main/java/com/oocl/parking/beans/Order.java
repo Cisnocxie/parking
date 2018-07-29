@@ -4,7 +4,7 @@ public class Order {
     private int id;
     private Receipt receipt;
     private Car car;
-    private ParkingBoy parkingBoy = null;
+    private int parkingBoyId = -1;
 
     public Order(Receipt receipt, Car car) {
         id = this.hashCode();
@@ -24,11 +24,11 @@ public class Order {
         return car;
     }
 
-    public ParkingBoy getParkingBoy() {
-        return parkingBoy;
+    public int getParkingBoyId() {
+        return parkingBoyId;
     }
 
-    public void setParkingBoy(ParkingBoy parkingBoy) {
-        this.parkingBoy = parkingBoy;
+    public void setParkingBoyId(int parkingBoyId) {
+        this.parkingBoyId = parkingBoyId;
     }
 }

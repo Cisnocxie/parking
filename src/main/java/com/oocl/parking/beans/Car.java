@@ -7,7 +7,15 @@ public class Car {
         this.plateNum = plateNum;
     }
 
+    public Car() {
+
+    }
+
     public String getPlateNum() {
         return plateNum;
+    }
+
+    public void setPlateNum(String plateNum) {
+        this.plateNum = plateNum;
     }
 }
