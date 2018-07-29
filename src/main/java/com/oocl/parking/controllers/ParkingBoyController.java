@@ -68,4 +68,21 @@ public class ParkingBoyController {
     public ParkingBoy getParkingBoyById(@PathVariable int id) {
         return parkingBoyService.getParkingBoyById(id);
     }
+
+    @DeleteMapping("/receipts/{id}")
+    public boolean unpark(@PathVariable int id) {
+        if (managerService.isReceiptExist(id)) {
+            Order order = managerService.getOrderByReceiptId(id);
+            ParkingBoy parkingBoy = parkingBoyService.getParkingBoyById(order.getParkingBoyId());
+            parkingBoy.getParkingLotList()
+                    .stream()
+                    .forEach(parkingLot -> {
+                        parkingLot.getCarList().remove(Integer.toString(id));
+                    });
+            order.setCompleted(true);
+            managerService.deleteReceipt(id);
+            return true;
+        }
+        return false;
+    }
 }

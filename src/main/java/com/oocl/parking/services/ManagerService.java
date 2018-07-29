@@ -41,4 +41,20 @@ public class ManagerService {
     public List<Order> getAllOrders() {
         return Database.getAllOrders();
     }
+
+    public boolean isReceiptExist(int id) {
+        return Database.getReceiptById(id) == null ? false : true;
+    }
+
+    public Order getOrderByReceiptId(int id) {
+        return Database.getAllOrders()
+                .stream()
+                .filter(order -> order.getReceipt().getNumber() == id)
+                .findFirst()
+                .get();
+    }
+
+    public boolean deleteReceipt(int id) {
+        return Database.getReceipts().remove(Database.getReceiptById(id));
+    }
 }

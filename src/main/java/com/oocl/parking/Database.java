@@ -55,4 +55,16 @@ public class Database {
     public static ParkingLot getParkingLotById(int id) {
         return parkingLots.stream().filter(parkingLot -> parkingLot.getId() == id).findFirst().get();
     }
+
+    public static Receipt getReceiptById(int id) {
+        return receipts.stream().filter(receipt -> receipt.getNumber() == id).findFirst().orElse(null);
+    }
+
+    public static void removeReceipt(int id) {
+        receipts.remove(getReceiptById(id));
+    }
+
+    public static List<Receipt> getReceipts() {
+        return receipts;
+    }
 }
